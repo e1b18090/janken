@@ -11,7 +11,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Lec02Controller {
   @PostMapping("/lec02")
   public String lec02(@RequestParam String name,ModelMap model) {
+    name ="Hi "+name;
     model.addAttribute("name",name);
+    return "lec02.html";
+  }
+
+@GetMapping("/lec02")
+  public String lec02janken(@RequestParam Integer hand, ModelMap model) {
+    String Hand;
+    String CPU="相手の手 Gu";
+    String kekka;
+    if(hand == 0){
+      Hand="あなたの手 Gu";
+      kekka="Aiko";
+      model.addAttribute("Hand",Hand);
+      model.addAttribute("CPU",CPU);
+      model.addAttribute("kekka",kekka);
+    }
+    if(hand == 1){
+      Hand="あなたの手 Choki";
+      kekka="You Lose!";
+      model.addAttribute("Hand",Hand);
+      model.addAttribute("CPU",CPU);
+      model.addAttribute("kekka",kekka);
+    }
+    if(hand == 2){
+      Hand="あなたの手 Pa";
+      kekka="You Win!";
+      model.addAttribute("Hand",Hand);
+      model.addAttribute("CPU",CPU);
+      model.addAttribute("kekka",kekka);
+    }
     return "lec02.html";
   }
 

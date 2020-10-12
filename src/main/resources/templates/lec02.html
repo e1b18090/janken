@@ -3,13 +3,28 @@
 
 <head>
   <meta charset="utf-8">
-  <title>SpringBoot janken</title>
+  <title>janken</title>
 </head>
 
 <body>
   <h1>Lec02 GET!</h1>
-  <p>Hi
-    <span th:text="${name}"></span>
+  <p>
+    <a th:text="${name}"></a>
+  </p>
+  <p>
+    <a href="/lec02?hand=0">ぐー</a>
+    <a href="/lec02?hand=1">ちょき</a>
+    <a href="/lec02?hand=2">ぱー</a>
+  </p>
+  <div>
+    <a th:text="${Hand}"></a>
+  </div>
+  <div>
+    <a th:text="${CPU}"></a>
+  </div>
+  <div>
+    <a th:text="${kekka}"></a>
+  </div>
   </p>
 </body>
 
