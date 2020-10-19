@@ -1,6 +1,10 @@
 package oit.is.z1384.kaizi.janken.controller;
 
+import java.security.Principal;
+
 import oit.is.z1384.kaizi.janken.model.Janken;
+import oit.is.z1384.kaizi.janken.model.Entry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +21,7 @@ public class Lec02Controller {
     return "lec02.html";
   }
 
-@GetMapping("/lec02")
+  /*@GetMapping("/lec02")
   public String lec02janken(@RequestParam Integer hand, ModelMap model) {
     String Hand;
     String CPU="相手の手 Gu";
@@ -44,6 +48,19 @@ public class Lec02Controller {
       model.addAttribute("CPU",CPU);
       model.addAttribute("kekka",kekka);
     }
+    return "lec02.html";
+  }
+  */
+
+  @Autowired
+  private Entry entry;
+
+  @GetMapping("/lec02")
+  public String lec03janken(Principal prin, ModelMap model) {
+    String loginUser = prin.getName();
+    this.entry.addUser(loginUser);
+    model.addAttribute("entry", this.entry);
+
     return "lec02.html";
   }
 
