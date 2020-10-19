@@ -1,5 +1,6 @@
 package oit.is.z1384.kaizi.janken.controller;
 
+import oit.is.z1384.kaizi.janken.model.Janken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,21 +22,22 @@ public class Lec02Controller {
     String Hand;
     String CPU="相手の手 Gu";
     String kekka;
-    if(hand == 0){
+    int result=Janken.playjanken(hand);
+    if(result == 0){
       Hand="あなたの手 Gu";
       kekka="Aiko";
       model.addAttribute("Hand",Hand);
       model.addAttribute("CPU",CPU);
       model.addAttribute("kekka",kekka);
     }
-    if(hand == 1){
+    if(result == 1){
       Hand="あなたの手 Choki";
       kekka="You Lose!";
       model.addAttribute("Hand",Hand);
       model.addAttribute("CPU",CPU);
       model.addAttribute("kekka",kekka);
     }
-    if(hand == 2){
+    if(result == 2){
       Hand="あなたの手 Pa";
       kekka="You Win!";
       model.addAttribute("Hand",Hand);
