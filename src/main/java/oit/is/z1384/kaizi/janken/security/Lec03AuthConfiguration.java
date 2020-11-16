@@ -24,6 +24,10 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
         .password("$2y$10$x3dsA6U5UfC/psFaEbgfoeilD//IMMoBVVqTtiRZWVGvsRiZ1cMAe").roles("USER");
     auth.inMemoryAuthentication().withUser("user2")
         .password("$2y$10$7trsLoPPz/pZNfTlY1rMe.6wI/v40SsM7WdvgqV1SPQB11LfKcB0a").roles("USER");
+    auth.inMemoryAuthentication().withUser("ほんだ")
+        .password("$2y$10$n/fuvbIgRSsfeC.ZJMO/ue8CSgoIBIsx1B.yXRrhzM.Mkhp8fZud2").roles("USER");
+    auth.inMemoryAuthentication().withUser("CPU")
+        .password("$2y$10$dOAs/YkkGbgW5ns6BW9Ws.ZJRE0zhLSAEV/8bG8hYVLiyaVPF0Gd2").roles("USER");
   }
 
   @Bean
@@ -48,6 +52,9 @@ public class Lec03AuthConfiguration extends WebSecurityConfigurerAdapter {
 
     // Spring Securityの機能を利用してログアウト．ログアウト時は http://localhost:8000/ に戻る
     http.logout().logoutSuccessUrl("/");
+
+    http.csrf().disable();
+    http.headers().frameOptions().disable();
   }
 
 }
