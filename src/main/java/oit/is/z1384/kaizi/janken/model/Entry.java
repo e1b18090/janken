@@ -1,41 +1,29 @@
 package oit.is.z1384.kaizi.janken.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.ibatis.javassist.expr.NewArray;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Entry {
-  ArrayList<String> users = new ArrayList<>();
-  int entryNo = 1;
+  private List<String> users = new ArrayList<>();
 
-  public void addUser(String name) {
-    // 同名のユーザが居たら何もせずにreturn
-    for (String s : this.users) {
-      if (s.equals(name)) {
+  public void adduser(String username) {
+    for (final String user : this.users) {
+      if (username.equals(user)) {
         return;
       }
     }
-    // 同名のユーザが居なかった場合はusersにnameを追加する
-    this.users.add(name);
+    this.users.add(username);
   }
 
-  // 以降はフィールドのgetter/setter
-  // これらがないとThymeleafで値を取得できない
-  public int getEntryNo() {
-    return entryNo;
+  public List<String> getUsers() {
+    return this.users;
   }
 
-  public void setEntryNo(int entryNo) {
-    this.entryNo = entryNo;
-  }
-
-  public ArrayList<String> getUsers() {
-    return users;
-  }
-
-  public void setUsers(ArrayList<String> users) {
+  public void setUsers(List<String> users) {
     this.users = users;
   }
-
 }
